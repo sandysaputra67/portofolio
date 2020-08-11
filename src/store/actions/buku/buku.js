@@ -13,7 +13,7 @@ const request =  axios.get(`${ENDPOINT}books`,  {
       console.log(response, "Respon Gtlist");
       return dispatch({
         type: actionsTypes.GET_BUKU,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
     });
   };

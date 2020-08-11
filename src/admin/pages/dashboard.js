@@ -15,6 +15,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     buku: state.bukuReducer.buku,
+    books:state.bukuReducer.books,
   };
 };
 
@@ -57,8 +58,9 @@ const AdminDashboard = (props) => {
 
   useEffect(() => {
     props.getbuku();
+    console.log("coba")
   }, []);
-
+console.log("book",books)
   const handleSubmit = (e) => {
     e.preventDefault();
     props.addbuku(data);
@@ -106,7 +108,7 @@ const AdminDashboard = (props) => {
                       type="text"
                       size="sm"
                       placeholder="Penulis"
-                      onChange={(e) => handleForm(e, "authorName")}
+                      onChange={(e) => handleForm(e, "author")}
                     />
                   </Form.Group>
                   <Form.Group as={Col} md="3">
@@ -114,18 +116,18 @@ const AdminDashboard = (props) => {
                       type="text"
                       size="sm"
                       placeholder="Harga"
-                      onChange={(e) => handleForm(e, "price")}
+                      onChange={(e) => handleForm(e, "harga")}
                     />
                   </Form.Group>
                   <Form.Group as={Col} md="2">
                     <Form.Control
                       as="select"
                       size="sm"
-                      onChange={(e) => handleForm(e, "bukutatus")}
+                      onChange={(e) => handleForm(e, "stok")}
                     >
-                      <option>Status</option>
-                      <option value="FOR_SELL">For Sell</option>
-                      <option value="OUT_OF_STOCK">Out Of Stock</option>
+                      <option>stok</option>
+                      <option value="ada">ada</option>
+                      <option value="tidakada">tidak ada</option>
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
@@ -134,16 +136,12 @@ const AdminDashboard = (props) => {
                     as="textarea"
                     rows="2"
                     size="sm"
-                    placeholder="Synopsis"
-                    onChange={(e) => handleForm(e, "synopsis")}
+                    placeholder="Sinopsis"
+                    onChange={(e) => handleForm(e, "Sinopsis")}
                   />
                 </Form.Group>
                 <Form.Group>
-                  {/* <input
-                    type="hidden"
-                    name="images"
-                    value=""
-                  /> */}
+                 
                   <Button
                     variant="primary"
                     type="submit"
@@ -164,7 +162,7 @@ const AdminDashboard = (props) => {
                   <th>No.</th>
                   <th>Judul Buku</th>
                   <th>Author</th>
-                  <th style={{ width: "400px" }}>Synopsis</th>
+                  <th style={{ width: "400px" }}>Sinopsis</th>
                   <th>Sale</th>
                   <th>Harga</th>
                   <th style={{ width: "100px" }}>#</th>
@@ -174,7 +172,7 @@ const AdminDashboard = (props) => {
                 {books && books.length === 0 ? (
                   <tr>
                     <td
-                      colspan="6"
+                      colSpan="6"
                       style={{
                         height: "80px",
                         textAlign: "center",
@@ -186,19 +184,19 @@ const AdminDashboard = (props) => {
                       </h5>
                     </td>
                   </tr>
-                ) : (
-                  books &&
-                  books.map((val) => {
-                    return (
-                      <TableDataShow
-                        no={i++}
-                        bukuData={val}
-                        doUpdate={handleUpdate}
-                        doDelete={handleDelete}
-                      />
-                    );
-                  })
-                )}
+                  ) : (
+                    books &&
+                    books.map((val) => {
+                      return (
+                        <TableDataShow
+                          no={i++}
+                          booksData={val}
+                          doUpdate={handleUpdate}
+                          doDelete={handleDelete}
+                        />
+                      );
+                    })
+                  )}
               </tbody>
             </table>
           </Card>

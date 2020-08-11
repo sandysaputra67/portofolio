@@ -72,7 +72,7 @@ export const updateUser = (id, data) => {
 }; */
 
 export const addUser = (data) => {
-  const request =  axios.put(`${ENDPOINT}users`,data,  {
+  const request =  axios.post(`${ENDPOINT}register`,data,  {
     headers: {
       'Authorization': token 
     }

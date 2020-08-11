@@ -184,7 +184,8 @@ const Home = (props) => {
               );
             })}
           {items &&
-            items.slice(0, 2).map((val) => {
+            items.slice.map((val) => {
+
               return (
                 <Col lg={3}>
                   <CardBukuAlt dataCard={val} doAddToCart={handleAddCart} />

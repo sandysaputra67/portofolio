@@ -34,7 +34,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
   };
 
   const handleForm = (e, formName) => {
-    setData({ ...data, [formName]: e.target.value });
+    FormData({ ...data, [formName]: e.target.value });
   };
 
   //console.log(data, "From component");
@@ -76,8 +76,9 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.synopsis.substr(0, 150)
+          booksData.synopsis
         )}
+
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>
         {edit ? (
