@@ -60,7 +60,7 @@ const AdminDashboard = (props) => {
   }, []);
 
   const handleSubmit = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     props.addbuku(data);
   };
   const handleUpdate = (id, updateData) => {
@@ -171,7 +171,7 @@ const AdminDashboard = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {books.length === 0 ? (
+                {books && books.length === 0 ? (
                   <tr>
                     <td
                       colspan="6"

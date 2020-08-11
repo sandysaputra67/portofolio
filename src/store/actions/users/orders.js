@@ -1,44 +1,28 @@
 import * as actionsTypes from "./actionsTypes";
 import axios from "axios";
 import { ENDPOINT, token } from "../../../utils/globals";
+export const addOrder = (data) =>{
 
-export const getListCart = () => {
-  const request =  axios.get(`${ENDPOINT}carts`,  {
+  const request =  axios.get(`${ENDPOINT}addOrder`,data,  {
     headers: {
       'Authorization': token 
     }
   });
   return (dispatch) => {
     request.then((response) => {
-      console.log(response, "Respon getListCart");
+      console.log(response, "Respon addorder");
       return dispatch({
-        type: actionsTypes.GET_LIST_CART,
+        type: actionsTypes.ADD_ORDER,
         payload: response.data,
       });
+      return dispatch(addOrder());
     });
-  };
+    };
 };
 
-export const addToCart = (data) => {
-  const request =  axios.post(`${ENDPOINT}carts`,data, {
-    headers: {
-      'Authorization': token 
-    }
-  });
-  return (dispatch) => {
-    request.then((response) => {
-      console.log(response, "Response from add book to cart action");
-      dispatch({
-        type: actionsTypes.ADD_TO_CART,
-        payload: response.data,
-      });
-    });
-  };
-};
-
-export const deleteFromCart = (id) => {
+export const deleteFromOrder = (id) => {
   
-  const request =  axios.delete(`${ENDPOINT}carts`,id,  {
+  const request =  axios.delete(`${ENDPOINT}orders`,id,  {
     headers: {
       'Authorization': token 
     }
@@ -46,10 +30,10 @@ export const deleteFromCart = (id) => {
   return (dispatch) => {
     request.then((response) => {
       dispatch({
-        type: actionsTypes.DELETE_FROM_CART,
+        type: actionsTypes.DELETE_FROM_ORDER,
         payload: response.data,
       });
-      return dispatch(getListCart());
+      return dispatch(addOrder());
     });
   };
 };
@@ -68,7 +52,7 @@ export const updateOnCart = (id, data) => {
         payload: response.data,
       });
 
-      return dispatch(getListCart());
+      return dispatch(addOrder());
     });
   };
 };

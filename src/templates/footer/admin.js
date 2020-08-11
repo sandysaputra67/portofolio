@@ -19,7 +19,7 @@ const FooterWrap = styled.div`
 const AdminFooter = () => {
   return (
     <FooterWrap>
-      <p>Crafted with love in Pacitan &copy; 2020</p>
+      <p>toko buku online@2020</p>
     </FooterWrap>
   );
 };

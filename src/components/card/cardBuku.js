@@ -9,7 +9,7 @@ const CardWrap = styled.div`
   height: 520px;
   position: relative;
   background-color: #f5f6f8;
-  > .card-bukuAuthor {
+  > .card-bookAuthor {
     margin-bottom: 15px;
     text-align: center;
     line-height: 1.36;
@@ -60,7 +60,7 @@ const CardTitle = styled.p`
   font-weight: bold;
 `;
 
-export default function CardBuku(props) {
+export default function cardBuku(props) {
   const { dataCard } = props;
   //console.log(dataCardContent);
 
@@ -75,18 +75,18 @@ export default function CardBuku(props) {
         {dataCard.isSale === "1" ? <div>Sale 50% off</div> : ""}
       </CardImagesWrap>
       <CardTitle>{dataCard.title}</CardTitle>
-      <p className="card-bukuAuthor">Author by {dataCard.authorName}</p>
+      <p className="card-bookAuthor">Author by {dataCard.authorName}</p>
       {dataCard.isSale === 1 ? (
-        <p className="card-price-disc">{`Rp ${numeral(dataCard.price).format(
+        <p className="card-harga-disc">{`Rp ${numeral(dataCard.harga).format(
           "0,0"
         )}`}</p>
       ) : (
-          <p className="card-price">{`Rp ${numeral(dataCard.price).format(
+          <p className="card-harga">{`Rp ${numeral(dataCard.harga).format(
             "0,0"
           )}`}</p>
         )}
       {dataCard.isSale === 1 ? (
-        <p className="card-price">{`Rp ${numeral(dataCard.price).format(
+        <p className="card-harga">{`Rp ${numeral(dataCard.harga).format(
           "0,0"
         )}`}</p>
       ) : (

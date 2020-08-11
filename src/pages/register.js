@@ -76,14 +76,13 @@ const Register = (props) => {
   console.log(data);
 
   const onSubmitRegistrasi = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     props.register(data);
   };
 
   const handleRegistrasi = (e, formName) => {
     setData({ ...data, [formName]: e.target.value });
   };
-
   return (
     <Layout>
       <LoginRegisterFormTitle>

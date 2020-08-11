@@ -3,8 +3,12 @@ import axios from "axios";
 import { ENDPOINT, token } from "../../../utils/globals";
 
 export const getListUser = () => {
-  const request = axios.get(`${ENDPOINT}/${token}/users`);
-
+  const request =  axios.get(`${ENDPOINT}users`,  {
+    headers: {
+      'Authorization': token 
+    }
+  });
+  
   return (dispatch) => {
     request.then((response) => {
       console.log(response);
@@ -17,7 +21,11 @@ export const getListUser = () => {
 };
 
 export const getUserById = (id) => {
-  const request = axios.get(`${ENDPOINT}/${token}/users/${id}`);
+  const request =  axios.get(`${ENDPOINT}users`, id, {
+    headers: {
+      'Authorization': token 
+    }
+  });
 
   return (dispatch) => {
     request.then((response) => {
@@ -30,8 +38,11 @@ export const getUserById = (id) => {
 };
 
 export const updateUser = (id, data) => {
-  const request = axios.put(`${ENDPOINT}/${token}/users/${id}`, data);
-
+  const request =  axios.put(`${ENDPOINT}users`,id,data,  {
+    headers: {
+      'Authorization': token 
+    }
+  });
   return (dispatch) => {
     request.then((response) => {
       console.log(response);
@@ -61,8 +72,11 @@ export const updateUser = (id, data) => {
 }; */
 
 export const addUser = (data) => {
-  const request = axios.post(`${ENDPOINT}/${token}/users`, data);
-
+  const request =  axios.put(`${ENDPOINT}users`,data,  {
+    headers: {
+      'Authorization': token 
+    }
+  });
   return (dispatch) => {
     request.then((response) => {
       console.log(response);

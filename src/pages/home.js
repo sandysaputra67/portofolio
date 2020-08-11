@@ -5,7 +5,9 @@ import Layout from "../templates/layout";
 import cardBuku from "../components/card/cardBuku";
 import CardBukuAlt from "../components/card/cardBukuAlt";
 import Button from "../components/button/mainButton";
-
+import buku1 from '../public/images/buku1.png';
+import buku2 from '../public/images/buku2.jpg';
+import buku3 from '../public/images/buku3.jpg';
 import { connect } from "react-redux";
 import { getListbuku } from "../store/actions/buku";
 import { addToCart } from "../store/actions/cart";
@@ -17,7 +19,7 @@ const mapStateToProps = (state) => {
     items: state.cartReducer.items,
   };
 };
-
+console.log(getListbuku, "ini getlist dicoba")
 const mapDispatchToProps = (dispatch) => {
   return {
     getbuku: () => dispatch(getListbuku()),
@@ -137,8 +139,7 @@ const PenulisOfTheWeek = styled.div`
 const Home = (props) => {
   const { buku, items,books } = props;
   window.localStorage.setItem("username", "sandy")
-
-
+  window.localStorage.getItem("username");
   useEffect(() => {
     props.getbuku();
   }, []);
@@ -146,7 +147,8 @@ const Home = (props) => {
   const handleAddCart = (id) => {
     props.addToCart(id);
   };
-
+  console.log(buku, "inidata buku")
+  console.log(books, "databoooks")
   return (
     <Layout>
       <TaglinesHomeWrap>
@@ -158,7 +160,6 @@ const Home = (props) => {
           </TaglinesHome>
         </Container>
       </TaglinesHomeWrap>
-
       <MainSlider>
         <h5>Slider Homes</h5>
       </MainSlider>
@@ -172,22 +173,24 @@ const Home = (props) => {
             </span>
           </SectionTitle>
           <Row>
-            {buku && books.map((val) => {
-                console.log(val, "ini vaal");
-                return (
-                  <Col lg={3}>
-                    <cardBuku dataCard={val} />
-                  </Col>
-                );
-              })}
-            {items &&
-              items.slice(0, 2).map((val) => {
-                return (
-                  <Col lg={3}>
-                    <CardBukuAlt dataCard={val} doAddToCart={handleAddCart} />
-                  </Col>
-                );
-              })}
+          {books.rows &&
+            books.rows.map((val) => {
+              console.log(val, "ini vaal");
+              return (
+                <Col lg={3}>
+                  {console.log(val)}
+                  <cardBuku dataCard={val} />
+                </Col>
+              );
+            })}
+          {items &&
+            items.slice(0, 2).map((val) => {
+              return (
+                <Col lg={3}>
+                  <CardBukuAlt dataCard={val} doAddToCart={handleAddCart} />
+                </Col>
+              );
+            })}
           </Row>
           <DataSectionButtonWrap>
             <Button title="Lihat Semua Kategori" />
@@ -202,21 +205,39 @@ const Home = (props) => {
           </SectionTitle>
           <PenulisOfTheWeek>
             <div className="penulis_box penulis_utama">
-              1
+            <img
+            className="img-fluid"
+            variant="top"
+            alt=""
+            src={buku1}
+            width={300}
+          />
               <div className="nama_penulis _utama">
                 <p className="nama">Uma Hapsari</p>
                 <span>In My Own Shoes</span>
               </div>
             </div>
             <div className="penulis_box penulis_1">
-              2
+            <img
+            className="img-fluid"
+            variant="top"
+            alt=""
+            src={buku2}
+            width={300}
+          />
               <div className="nama_penulis">
                 <p className="nama">  Kei Sanbe</p>
                 <span>Erased Vol. 1</span>
               </div>
             </div>
             <div className="penulis_box penulis_2">
-              3
+            <img
+            className="img-fluid"
+            variant="top"
+            alt=""
+            src={buku3}
+            width={300}
+          />
               <div className="nama_penulis">
                 <p className="nama">Mark Manson</p>
                 <span>Segala-galanya Ambyar  </span>

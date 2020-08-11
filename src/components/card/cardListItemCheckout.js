@@ -57,19 +57,19 @@ const cardListItemCheckout = (props) => {
   return (
     <ListItemWrap>
       <ImagesListItemContainer>
-        <img
-          src="https://ashmagautam.files.wordpress.com/2013/11/mcj038257400001.jpg"
-          alt=""
-          style={{ width: "100%" }}
-        />
+      <img
+      src="https://ashmagautam.files.wordpress.com/2013/11/mcj038257400001.jpg"
+      alt=""
+      style={{ width: "100%" }}
+    />
       </ImagesListItemContainer>
       <ContentListItemContainer>
         <h4 className="item__names">{dataItem.title}</h4>
         <p className="item__author">Author: {dataItem.authorName}</p>
-        <p className="item__desc">
-          <b>Synopsis: </b>
+        <p className="item__deskripsi">
+          <b>sinopsis: </b>
           <br />
-          {dataItem.synopsis}
+          {dataItem.sinopsis}
         </p>
         <ButtonGroup className="mb-2">
           <Button
@@ -94,7 +94,7 @@ const cardListItemCheckout = (props) => {
             +
           </Button>
         </ButtonGroup>
-        <h5 className="item__price">
+        <h5 className="item__harga">
           <small>IDR </small>
           <b>{numeral(dataItem.price).format("0,0")}</b>
         </h5>

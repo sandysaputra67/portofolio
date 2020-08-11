@@ -72,7 +72,7 @@ export default function CardBuku(props) {
     <CardWrap>
       <CardImagesWrap>
         <img
-          src="https://ashmagautam.files.wordpress.com/2013/11/mcj038257400001.jpg"
+          src="buku2.jpg"
           alt=""
           style={{ width: "100%" }}
         />
@@ -81,7 +81,7 @@ export default function CardBuku(props) {
       <CardTitle>{dataCard.title}</CardTitle>
       <p className="card-bukuAuthor">Author by {dataCard.authorName}</p>
       {dataCard.isSale === 1 ? (
-        <p className="card-price-disc">{`Rp ${numeral(dataCard.price).format(
+        <p className="card-harga-disc">{`Rp ${numeral(dataCard.harga).format(
           "0,0"
         )}`}</p>
       ) : (

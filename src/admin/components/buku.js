@@ -5,23 +5,24 @@ import { withRouter } from "react-router-dom";
 const Books = ({ no, booksData, doUpdate, doDelete }) => {
   const [data, setData] = useState({});
   const [edit, setEdit] = useState(false);
-  const bookStatus = booksData.bookStatus === "FOR_SELL" ? "info" : "warning";
+  //const bookStatus = booksData.bookStatus === "FOR_SELL" ? "info" : "warning";
 
-  useEffect(() => {
-    setData({
-      title: booksData.title,
-      author: booksData.author,
-      stok:booksData.stok,
-      kategori_id:booksData.kategori_id,
-      deskripsi:booksData.deskripsi,
-      image_url:booksData.image_url,
-      no_isbn:booksData.no_isbn,
-      berat:booksData.berat,
-      sinopsis: booksData.sinopsis,
-      harga: booksData.harga,
-      bukustatus: booksData.bukustatus,
-    });
-  }, []);
+    useEffect(() => {
+      var formData  = new FormData()
+       formData.append("kategori_id",data.kategori_id);
+      formData.append("title",data.title);
+      formData.append("author",data.author);
+      formData.append("stok",data.stok);
+      formData.append("deskripsi",data.deskripsi);
+      formData.append("image_url",data.image_url);
+      formData.append("no_isbn",data.no_isbn);
+      formData.append("berat",data.berat);
+      formData.append("sinopsis",data.sinopsis);
+      formData.append("harga",data.harga);
+      formData.append("stok",data.stok);
+    })
+  
+
 
   const handleUpdate = (id) => {
     doUpdate(id, data);
@@ -61,7 +62,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.author
+          booksData.authorName
         )}
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>
@@ -75,7 +76,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.sinopsis.substr(0, 150)
+          booksData.synopsis.substr(0, 150)
         )}
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>
@@ -83,17 +84,17 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
           <>
             <Form.Control
               as="select"
-              value={data.bukutatus}
-              onChange={(e) => handleForm(e, "bukutatus")}
+              value={data.stok}
+              onChange={(e) => handleForm(e, "stok")}
             >
-              <option value="FOR_SELL">For Sell</option>
-              <option value="OUT_OF_STOCK">Out Of Stock</option>
+              <option value="ada">ada</option>
+              <option value="tidakada">tidakada</option>
             </Form.Control>
           </>
-        ) : booksData.bukutatus === "FOR_SELL" ? (
-          "For Sell"
+        ) : data.stok === "stok" ? (
+          "ada"
         ) : (
-          "Out Of Stock"
+          "tidakada"
         )}
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>
@@ -105,7 +106,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.harga
+          booksData.price
         )}
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>
@@ -115,7 +116,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
               variant="warning"
               size="sm"
               style={{ marginRight: "5px" }}
-              onClick={() => handleUpdate(booksData._id)}
+              onClick={() => handleUpdate(data._id)}
             >
               <i className="ion-checkmark"></i>
             </Button>
@@ -124,18 +125,13 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
               size="sm"
               onClick={() => {
                 setEdit(false);
-                setData({
-                  title: booksData.title,
-                  author: booksData.author,
-                  harga: booksData.harga,
-                  stok:booksData.stok,
-                  kategori_id:booksData.kategori_id,
-                  deskripsi:booksData.deskripsi,
-                  berat:booksData.berat,
-                  image_url:booksData.image_url,
-                  bukustatus: booksData.bukustatus,
-                  sinopsis: booksData.sinopsis,
-                });
+                //setData({
+                  //title: booksData.title,
+                  //authorName: booksData.authorName,
+                 // price: booksData.price,
+                  //bookStatus: booksData.bookStatus,
+                 // synopsis: booksData.synopsis,
+                //});
               }}
             >
               <i className="ion-backspace"></i>

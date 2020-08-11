@@ -9,17 +9,17 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import buku from "./store/reducers/buku";
+import books from "./store/reducers/buku";
 import users from "./store/reducers/user";
 import carts from "./store/reducers/cart";
 
 const rootReducer = combineReducers({
-  bukuReducer: buku,
+  bukuReducer: books,
   userReducer: users,
   cartReducer: carts,
 });
 
-/* const logger = (store) => {
+const logger = (store) => {
   return (next) => {
     return (action) => {
       console.log("[Middleware] Dispatching", action);
@@ -28,20 +28,21 @@ const rootReducer = combineReducers({
       return result;
     };
   };
-}; */
+}; 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  //composeEnhancers(applyMiddleware(logger, thunk))
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(logger, thunk))
+  //composeEnhancers(applyMiddleware(thunk))
 );
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <GlobalStyle />
+
       <Provider store={store}>
         <App />
       </Provider>

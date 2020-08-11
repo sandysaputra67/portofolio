@@ -45,12 +45,12 @@ const AdminLogin = (props) => {
   //}, []);
 
   const onSubmitLogin = (e) => {
-    e.preventDefault();
-    props.login({
-        username,
-        password,
-    });
-    if (username == "sansan" && password == "123456788") {
+   // e.preventDefault();
+    //props.login({
+        //username,
+        //password,
+   // });
+    if (username == "sandy" && password == "sandy") {
       alert("Berhasil login");
       document.getElementById("login").action = "/imcoolmaster/dashboard";
       window.localStorage.setItem("token", "blablabalblabal");

@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     books:state.bukuReducer.books,
   };
 };
-
+console.log(getListbuku,"ini getlisttt")
 const mapDispatchToProps = (dispatch) => {
   return {
     getbuku: () => dispatch(getListbuku()),
@@ -55,7 +55,7 @@ const Index = (props) => {
             <span>semua jenis buku </span>
           </SectionTitle>
           <Row>
-            {books.length === 0 ? (
+            {books && books.length === 0 ? (
               <Col>
                 <Alert variant="warning">
                   <Alert.Heading>There is no data</Alert.Heading>
