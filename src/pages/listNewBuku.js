@@ -7,7 +7,7 @@ export default function index(props) {
     <Layout>
       <Container>
         <div style={{ height: "300px" }}>
-          <h1>Ini halaman buku baru</h1>
+          <h1>coming soon ready new stok buku bulan depan</h1>
         </div>
       </Container>
     </Layout>

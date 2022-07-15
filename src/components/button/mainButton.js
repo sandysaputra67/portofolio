@@ -20,7 +20,7 @@ const Button = styled.button`
 export default function MainButton(props) {
   const { title, style, type } = props;
   return (
-    <Button style={style} type={type}>
+    <Button style={style} type={type} onclick ={title}>
       {title}
     </Button>
   );

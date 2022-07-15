@@ -62,7 +62,7 @@ const CardTitle = styled.p`
 
 export default function cardBuku(props) {
   const { dataCard } = props;
-  //console.log(dataCardContent);
+  console.log(dataCard,"cekcard");
 
   return (
     <CardWrap>
@@ -96,7 +96,7 @@ export default function cardBuku(props) {
         className="btn btn-primary btn-sm btn-block"
         to={`/rincian-buku/${dataCard._id}`}
       >
-        Lihat Buku
+       add to cart
       </Link>
     </CardWrap>
   );

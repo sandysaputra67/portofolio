@@ -72,8 +72,8 @@ export default function CardBuku(props) {
     <CardWrap>
       <CardImagesWrap>
         <img
-          src="buku2.jpg"
-          alt=""
+          src="buku1.png"
+          alt="buku"
           style={{ width: "100%" }}
         />
         {dataCard.isSale === "1" ? <div>Sale 50% off</div> : ""}
@@ -102,7 +102,7 @@ export default function CardBuku(props) {
             className="btn btn-primary btn-sm btn-block"
             to={`/rincian-buku/${dataCard.id}`}
           >
-            Lihat Buku
+
         </Link>
         </div>
         <div className="col-md-6" style={{ padding: "0 5px" }}>
@@ -110,7 +110,7 @@ export default function CardBuku(props) {
             className="btn btn-warning btn-sm btn-block"
             onClick={() => { handleAddToCart(dataCard.id) }}
           >
-            Add Cart
+            Add to Cart
         </Link>
         </div>
       </div>

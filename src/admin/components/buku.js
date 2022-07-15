@@ -62,7 +62,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.authorName
+          booksData.author
         )}
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>
@@ -76,7 +76,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.synopsis
+          booksData.sinopsis
         )}
 
       </td>
@@ -107,7 +107,7 @@ const Books = ({ no, booksData, doUpdate, doDelete }) => {
             />
           </>
         ) : (
-          booksData.price
+          booksData.harga
         )}
       </td>
       <td style={edit ? { verticalAlign: "top" } : { verticalAlign: "middle" }}>

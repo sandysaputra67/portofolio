@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/cart/actionsTypes";
+import * as actionsTypes from "../actions/cart/actionsTypes";
 
 const initialState = {
   addedItems: [],
@@ -29,16 +29,16 @@ const initialState = {
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_LIST_CART:
+    case actionsTypes.GET_LIST_CART:
       return {
         ...state,
-        addedItems: action.payload,
+        addedItems: action.payload.data.data.rows,
       };
-    case actionTypes.UPDATE_ON_CART:
+    case actionsTypes.UPDATE_ON_CART:
       return {
         ...state,
       };
-    case actionTypes.DELETE_FROM_CART:
+    case actionsTypes.DELETE_FROM_CART:
       return {
         ...state,
       };

@@ -12,11 +12,15 @@ import thunk from "redux-thunk";
 import books from "./store/reducers/buku";
 import users from "./store/reducers/user";
 import carts from "./store/reducers/cart";
+import orders from "./store/reducers/orders";
+import kategori from "./store/reducers/kategori";
 
 const rootReducer = combineReducers({
   bukuReducer: books,
   userReducer: users,
   cartReducer: carts,
+  orderReducer:orders,
+  kategoriReducer:kategori,
 });
 
 const logger = (store) => {

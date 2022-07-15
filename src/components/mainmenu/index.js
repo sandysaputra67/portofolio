@@ -43,11 +43,9 @@ export default function MainMenu() {
         <MainNav>
           <Link to="/semua-buku">Semua Koleksi</Link>
           <Link to="/buku-baru">Buku Baru</Link>
-          <Link to="/buku-pilihan">Buku Pilihan</Link>
-          <Link to="/buku-best-seller">National Beset Seller</Link>
-          <Link to="/buku-import">Buku Import</Link>
+          <Link to="/kategori">kategori buku</Link>
         </MainNav>
-        <Link to="/register">REGISTER</Link>
+        <Link to="/register">register</Link>
       </Container>
     </MainNavWrap>
   );

@@ -64,6 +64,7 @@ console.log("book",books)
   const handleSubmit = (e) => {
     e.preventDefault();
     props.addbuku(data);
+    props.getbuku();
   };
   const handleUpdate = (id, updateData) => {
     props.updatebuku(id, updateData);
@@ -82,7 +83,7 @@ console.log("book",books)
     return <Redirect to="/imcoolmaster" />;
   }
 
-  let i = 1;
+  let i= 1;
   return (
     <Layout>
       <SectionDiv>
@@ -160,10 +161,10 @@ console.log("book",books)
               <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Judul Buku</th>
+                  <th>title Buku</th>
                   <th>Author</th>
                   <th style={{ width: "400px" }}>Sinopsis</th>
-                  <th>Sale</th>
+                  <th>stok</th>
                   <th>Harga</th>
                   <th style={{ width: "100px" }}>#</th>
                 </tr>
@@ -186,10 +187,10 @@ console.log("book",books)
                   </tr>
                   ) : (
                     books &&
-                    books.map((val) => {
+                    books.map((val,index) => {
                       return (
                         <TableDataShow
-                          no={i++}
+                          key={index}
                           booksData={val}
                           doUpdate={handleUpdate}
                           doDelete={handleDelete}

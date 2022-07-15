@@ -77,13 +77,31 @@ export const addUser = (data) => {
       'Authorization': token 
     }
   });
+
   return (dispatch) => {
     request.then((response) => {
       console.log(response);
       dispatch({
         type: actionsTypes.ADD_USER,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
     });
   };
+};
+export const addlogin = (data) => {
+const request =  axios.post(`${ENDPOINT}login`,data,  {
+  headers: {
+    'Authorization': token 
+  }
+});
+
+return (dispatch) => {
+  request.then((response) => {
+    console.log(response);
+    dispatch({
+      type: actionsTypes.ADD_LOGIN,
+      payload: response.data,
+    });
+  });
+};
 };

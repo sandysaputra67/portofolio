@@ -14,7 +14,6 @@ import { addToCart } from "../store/actions/cart";
 
 const mapStateToProps = (state) => {
   return {
-    buku: state.bukuReducer.buku,
     books: state.bukuReducer.books,
     items: state.cartReducer.items,
   };
@@ -147,7 +146,6 @@ const Home = (props) => {
   const handleAddCart = (id) => {
     props.addToCart(id);
   };
-  console.log(buku, "inidata buku")
   console.log(books, "databoooks")
   return (
     <Layout>
@@ -160,10 +158,7 @@ const Home = (props) => {
           </TaglinesHome>
         </Container>
       </TaglinesHomeWrap>
-      <MainSlider>
-        <h5>Slider Homes</h5>
-      </MainSlider>
-
+ 
       <SectionBukuTerlaris>
         <Container>
           <SectionTitle>
@@ -183,8 +178,7 @@ const Home = (props) => {
                 </Col>
               );
             })}
-          {items &&
-            items.slice.map((val) => {
+          {items && items.slice.map((val) => {
 
               return (
                 <Col lg={3}>

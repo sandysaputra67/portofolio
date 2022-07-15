@@ -1,8 +1,8 @@
 import * as actionTypes from "../actions/users/actionsTypes";
 
 const initialState = {
-  users: [],
-  user: {},
+  users: null,
+  user: null,
 };
 
 const users = (state = initialState, action) => {
@@ -21,12 +21,17 @@ const users = (state = initialState, action) => {
       return {
         ...state,
       };
+      case actionTypes.ADD_LOGIN:
+        return {
+          ...state,
+          users: action.payload.data.data.rows,
+        };
     /* case actionTypes.DELETE_USER:
       return {
         ...state,
       }; */
     default:
-      return initialState;
+      return state;
   }
 };
 

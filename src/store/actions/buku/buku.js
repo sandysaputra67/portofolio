@@ -29,7 +29,7 @@ export const getBukuById = (id) => {
     request.then((response) => {
       return dispatch({
         type: actionsTypes.GET_BUKU_BY_ID,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
     });
   };
@@ -45,7 +45,7 @@ const request =  axios.put(`${ENDPOINT}books`,id,data, {
     request.then((response) => {
       dispatch({
         type: actionsTypes.UPDATE_BUKU,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
       return dispatch(getListbuku());
     });
@@ -86,7 +86,7 @@ export const addBuku = (data) => {
   const request =  axios.post(`${ENDPOINT}books`, formData, {
 
     headers: {
-      'Authorization': token,
+      'Authorization': global,
       'Content-Type': 'multipart/form-data'
 
       
@@ -97,7 +97,7 @@ export const addBuku = (data) => {
     request.then((response) => {
       dispatch({
         type: actionsTypes.ADD_BUKU,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
     });
   };

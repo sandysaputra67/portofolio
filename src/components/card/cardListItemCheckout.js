@@ -96,7 +96,7 @@ const cardListItemCheckout = (props) => {
         </ButtonGroup>
         <h5 className="item__harga">
           <small>IDR </small>
-          <b>{numeral(dataItem.price).format("0,0")}</b>
+          <b>{numeral(dataItem.harga).format("0,0")}</b>
         </h5>
       </ContentListItemContainer>
     </ListItemWrap>

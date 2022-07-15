@@ -1,24 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import styled from "styled-components";
 import Layout from "../templates/layout";
 import CardBuku from "../components/card/cardBuku";
 import { connect } from "react-redux";
-import { getListbuku } from "../store/actions/buku";
+import { getListkategori } from "../store/actions/kategori";
+import Kategori from "../store/reducers/kategori";
 
 const mapStateToProps = (state) => {
+  console.log(state, "getlist");
   return {
-    buku:state.bukuReducer.buku,
-    books:state.bukuReducer.books,
-  };
-};
-console.log(getListbuku,"ini getlisttt")
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getbuku: () => dispatch(getListbuku()),
+    kategori: state.kategoriReducer.kategori,
+
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    kategori: () => dispatch(getListkategori()),
+  };
+};
 const SectionContent = styled.section`
   padding-top: 50px;
   padding-bottom: 90px;
@@ -40,22 +41,24 @@ const SectionTitle = styled.div`
 `;
 
 const Index = (props) => {
-  const { books} = props;
+  const { kategori } = props;
 
   useEffect(() => {
-    props.getbuku();
+    console.log(props ,"kategori")
+    props.kategori();
   }, []);
 
-  return (
-    <Layout>
+    console.log("From component");
+    return (
+      <Layout>
       <SectionContent>
         <Container>
           <SectionTitle>
             <h4>Semua buku</h4>
-            <span>semua buku  </span>
+            <span>semua buku</span>
           </SectionTitle>
           <Row>
-            {books && books.length === 0 ? (
+            {kategori && kategori.length === 0 ? (
               <Col>
                 <Alert variant="warning">
                   <Alert.Heading>There is no data</Alert.Heading>
@@ -65,8 +68,8 @@ const Index = (props) => {
                 </Alert>
               </Col>
             ) : (
-              books &&
-              books.map((val,index) => {
+              kategori &&
+              kategori.map((val,index) => {
                 console.log("val")
                 return (
                   <Col key={index} lg={3} className="mb-4">
@@ -82,4 +85,4 @@ const Index = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+  export default connect(mapStateToProps, mapDispatchToProps)(Index);

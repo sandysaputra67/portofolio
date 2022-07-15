@@ -13,7 +13,7 @@ export const getListCart = () => {
       console.log(response, "Respon getListCart");
       return dispatch({
         type: actionsTypes.GET_LIST_CART,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
     });
   };
@@ -27,10 +27,10 @@ export const addToCart = (data) => {
   });
   return (dispatch) => {
     request.then((response) => {
-      console.log(response, "Response from add book to cart action");
+      console.log(response, "respon cart ");
       dispatch({
         type: actionsTypes.ADD_TO_CART,
-        payload: response.data,
+        payload: response.data.data.rows,
       });
     });
   };

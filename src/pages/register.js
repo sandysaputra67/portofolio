@@ -7,6 +7,8 @@ import Layout from "../templates/layout";
 
 import { connect } from "react-redux";
 import { addUser } from "../store/actions/users";
+import { register } from "numeral";
+import users from "../store/reducers/user";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -62,42 +64,43 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const FormPolicyWrap = styled.div`
-  width: 344px;
-  margin-top: 18px;
-  margin-bottom: 44px;
-  font-size: 12px;
-  line-height: 1.83;
-  letter-spacing: 0.38px;
-  color: #aaabab;
-`;
+
 const Register = (props) => {
+  const {user,history} = props
   const [data, setData] = useState({});
   console.log(data);
 
   const onSubmitRegistrasi = (e) => {
     e.preventDefault();
     props.register(data);
+    alert("yey pengguna telah ter registrasi ");
   };
 
   const handleRegistrasi = (e, formName) => {
     setData({ ...data, [formName]: e.target.value });
   };
+
+ useEffect(() => {
+   if ( user ){
+   history.push('/login')
+  }
+  }, [user,history]);
+    
+  
   return (
     <Layout>
       <LoginRegisterFormTitle>
         <div>
           <p>
-            Cilsy buku Online Store adalah Toko Buku online dengan koleksi buku
-            terbanyak di Indonesia.
+           toko buku online
           </p>
         </div>
       </LoginRegisterFormTitle>
       <LoginRegisterFormWrap>
         <FormContainer>
-          <h3>Sign up</h3>
+          <h2>register pengguna</h2>
           <span>
-            atau silahkan klik ini <Link to="/login">sign in</Link>
+           kalo sudah memiliki akun silahkan login <Link to="/login">login pengguna</Link>
           </span>
           <Form onSubmit={(e) => onSubmitRegistrasi(e)}>
             <Form.Group>
@@ -137,6 +140,6 @@ const Register = (props) => {
       </LoginRegisterFormWrap>
     </Layout>
   );
-};
+  };
 
 export default connect(null, mapDispatchToProps)(Register);

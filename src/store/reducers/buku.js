@@ -7,6 +7,11 @@ const initialState = {
 
 const Buku = (state = initialState, action) => {
   switch (action.type) {
+    case actionsTypes.ADD_BUKU:
+      return{
+        ...state,
+        buku:action.payload
+      };
     case actionsTypes.GET_BUKU:
       return {
         ...state,
@@ -27,7 +32,7 @@ const Buku = (state = initialState, action) => {
       };
     default:
       console.log(initialState, "Call data from bookReducer")
-      return initialState;
+      return state;
   }
 };
 

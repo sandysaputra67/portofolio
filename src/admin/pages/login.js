@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUser: () => dispatch(getListUser()),
+    
   };
 };
 
@@ -50,10 +51,10 @@ const AdminLogin = (props) => {
         //username,
         //password,
    // });
-    if (username == "sandy" && password == "sandy") {
+    if (username === "sandy" && password === "sandy") {
       alert("Berhasil login");
       document.getElementById("login").action = "/imcoolmaster/dashboard";
-      window.localStorage.setItem("token", "blablabalblabal");
+      window.localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsIm5hbWUiOiJuZCIsInJvbGVfaWQiOjcsInVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCQyNEYxQmltWDByVkJjSjNwZWxNSnZlbUFZYndrMEJqY3VpMlh4WEhuWExUdEtKRnNwLm4wYSIsImNyZWF0ZWRfYXQiOiIyMDIwLTA3LTI3VDEzOjM1OjIxLjAwMFoiLCJ1cGRhdGVkX2F0IjoiMjAyMC0wNy0yOVQxNTo0MTowNy4wMDBaIiwiZGVsZXRlZF9hdCI6bnVsbCwiaWF0IjoxNTk3MjA2MjkyLCJleHAiOjE1OTcyOTI2OTIsImF1ZCI6Imh0dHA6Ly9jb250b2guY29tIiwiaXNzIjoiY29udG9oLmNvbSIsInN1YiI6ImNvbnRvaC5jb20ifQ.a69E7Rb7vQCKEUjCFjtwQsuvtVn7DEk5HGZfD-uGfk4");
     } else {
       alert("anda gagal login");
     }
